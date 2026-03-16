@@ -25,14 +25,25 @@ export default function Places({
                 key={place.id}
                 className={`relative p-3 border  rounded-sm ${isSelectedPlace ? "border-lime-500" : "border-white"}`}
               >
-                <button onClick={() => onSelectPlace(place.id)}>
-                  <Image
-                    src={place.image.src}
-                    alt={place.image.alt}
-                    className="rounded-sm"
-                  />
-                  <h3>{place.title}</h3>
-                </button>
+                {!isSelectedPlace ? (
+                  <button onClick={() => onSelectPlace(place.id)}>
+                    <Image
+                      src={place.image.src}
+                      alt={place.image.alt}
+                      className="rounded-sm"
+                    />
+                    <h3>{place.title}</h3>
+                  </button>
+                ) : (
+                  <>
+                    <Image
+                      src={place.image.src}
+                      alt={place.image.alt}
+                      className="rounded-sm"
+                    />
+                    <h3>{place.title}</h3>
+                  </>
+                )}
                 {isSelectedPlace && (
                   <DialogTrigger asChild>
                     <button
